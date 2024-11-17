@@ -1,2 +1,3 @@
-# todo-app
-Simple todo app to demonstrate React
+# To-Do App
+
+A simple to-do app built with React for a presentation at Twentic.
