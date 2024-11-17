@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Input from "./components/Input";
 import Todo from "./components/Todo";
-import todosData from "./data/todos";
+import todosData from "./data/todos.json";
 
 function App() {
   const [todos, setTodos] = useState(todosData);
@@ -34,7 +34,7 @@ function App() {
   };
 
   return (
-    <div className="app-container">
+    <div className="flex justify-center items-center h-screen bg-gradient-custom">
       <div className="todo-container">
         <h1>To-Do</h1>
         <hr className="border-slate-200 mb-6 mt-4" />

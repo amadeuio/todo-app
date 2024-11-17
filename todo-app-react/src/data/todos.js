@@ -1,7 +1,0 @@
-const todosData = [
-  { id: 1, title: "Buy milk", isChecked: false },
-  { id: 2, title: "Buy bread", isChecked: true },
-  { id: 3, title: "Buy eggs", isChecked: false },
-];
-
-export default todosData;

@@ -23,8 +23,17 @@
 }
 
 @layer components {
-  .app-container {
-    @apply flex justify-center items-center h-screen bg-gradient-custom;
+  .todo-container {
+    @apply max-w-lg 
+               w-full 
+               flex 
+               flex-col 
+               gap-4
+               border-slate-200 
+               rounded-xl 
+               p-16 
+               bg-white;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
   }
 
   .btn-primary {
@@ -104,18 +113,5 @@
       theme("colors.slate.100") 70%,
       theme("colors.highlight.DEFAULT") 200%
     );
-  }
-
-  .todo-container {
-    @apply max-w-lg 
-           w-full 
-           flex 
-           flex-col 
-           gap-4
-           border-slate-200 
-           rounded-xl 
-           p-16 
-           bg-white;
-    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
   }
 }
