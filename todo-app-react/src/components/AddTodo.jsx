@@ -1,6 +1,6 @@
 import AddButton from "./AddButton";
 
-function Input({ onSubmit, onChange }) {
+function AddTodo({ onSubmit, onChange }) {
   return (
     <div className="flex items-center gap-2 mb-6">
       <input
@@ -14,4 +14,4 @@ function Input({ onSubmit, onChange }) {
   );
 }
 
-export default Input;
+export default AddTodo;

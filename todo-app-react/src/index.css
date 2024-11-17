@@ -59,7 +59,7 @@
            py-4 
            px-5
            text-base
-           hover:border-slate-300 
+           hover:border-slate-200 
            transition-all duration-200
            bg-white hover:bg-slate-50
            flex items-center gap-4;
@@ -79,7 +79,7 @@
            text-base
            w-full
            bg-white
-           hover:border-slate-300
+           hover:border-slate-200
            transition-all duration-200
            placeholder:text-slate-400;
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);

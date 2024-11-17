@@ -1,21 +1,13 @@
 import { Trash2 } from "lucide-react";
 import { Check } from "lucide-react";
+import Checkbox from "./Checkbox";
 
-const Todo = ({ todo, onClick, onDeleteClick }) => {
+const Todo = ({ todo, onCheckboxClick, onDeleteClick }) => {
   const { isChecked, title } = todo;
 
   return (
     <div className="todo-item">
-      <div
-        className={`flex items-center justify-center h-5 w-5 border rounded ${
-          isChecked ? "bg-highlight border-highlight" : "border-slate-200"
-        }`}
-        onClick={onClick}
-      >
-        {isChecked && (
-          <Check strokeWidth={3} size={15} className="text-white pt-[2px]" />
-        )}
-      </div>
+      <Checkbox isChecked={isChecked} onClick={onCheckboxClick} />
       <div className={`${isChecked ? "line-through" : ""}`}>{title}</div>
       <Trash2
         size={16}

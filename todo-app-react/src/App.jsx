@@ -1,36 +1,37 @@
 import { useState } from "react";
-import Input from "./components/Input";
+import AddTodo from "./components/AddTodo";
 import Todo from "./components/Todo";
-import todosData from "./data/todos.json";
+import initialTodos from "./data/todos";
 
 function App() {
-  const [todos, setTodos] = useState(todosData);
+  const [todos, setTodos] = useState(initialTodos);
   const [inputValue, setInputValue] = useState("");
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
   };
 
-  const handleSubmit = () => {
-    setTodos([
-      ...todos,
-      { id: todos.length + 1, title: inputValue, isChecked: false },
-    ]);
-  };
-
-  const handleTodoClick = (id) => {
-    setTodos(
-      todos.map((todo) => {
-        if (todo.id === id) {
-          return { ...todo, isChecked: !todo.isChecked };
-        }
-        return todo;
-      })
+  const handleCheckboxClick = (id) => {
+    const updatedTodos = todos.map((todo) =>
+      todo.id === id ? { ...todo, isChecked: !todo.isChecked } : todo
     );
+
+    setTodos(updatedTodos);
   };
 
   const handleDeleteClick = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
+    const updatedTodos = todos.filter((todo) => todo.id !== id);
+
+    setTodos(updatedTodos);
+  };
+
+  const handleSubmit = () => {
+    const updatedTodos = [
+      ...todos,
+      { id: todos.length + 1, title: inputValue, isChecked: false },
+    ];
+
+    setTodos(updatedTodos);
   };
 
   return (
@@ -38,13 +39,13 @@ function App() {
       <div className="todo-container">
         <h1>To-Do</h1>
         <hr className="border-slate-200 mb-6 mt-4" />
-        <Input onSubmit={handleSubmit} onChange={handleInputChange} />
+        <AddTodo onSubmit={handleSubmit} onChange={handleInputChange} />
         <div className="flex flex-col gap-2">
           {todos.map((todo) => (
             <Todo
               key={todo.id}
               todo={todo}
-              onClick={() => handleTodoClick(todo.id)}
+              onCheckboxClick={() => handleCheckboxClick(todo.id)}
               onDeleteClick={() => handleDeleteClick(todo.id)}
             />
           ))}
