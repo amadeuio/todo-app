@@ -1,5 +1,4 @@
 import { Trash2 } from "lucide-react";
-import { Check } from "lucide-react";
 import Checkbox from "./Checkbox";
 
 const Todo = ({ todo, onCheckboxClick, onDeleteClick }) => {
