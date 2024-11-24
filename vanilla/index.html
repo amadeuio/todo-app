@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>To-Do App</title>
+    <style>
+      .app-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .task-list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .task-item {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        background-color: #f1f5f9;
+        border-radius: 4px;
+      }
+      hr {
+        border: 1px solid #e2e8f0;
+        margin: 16px 0 24px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app-container">
+      <h1>To-Do</h1>
+      <hr />
+      <div>
+        <input type="text" id="taskInput" placeholder="Add a new task" />
+        <button id="addTaskBtn">Add Task</button>
+      </div>
+      <div id="taskList" class="task-list"></div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>

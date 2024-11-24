@@ -1,22 +1,24 @@
-const taskContainer = document.querySelector(".task-container");
-const taskInput = document.querySelector("#taskInput");
-const taskList = document.querySelector("#taskList");
+import tasksData from "./data/tasks";
 
-let tasks = [];
+let tasks = tasksData;
 
 const renderTasks = () => {
+  const taskList = document.getElementById("taskList");
   taskList.innerHTML = "";
+
   tasks.forEach((task) => {
     const taskElement = document.createElement("div");
     taskElement.className = "task-item";
     taskElement.innerHTML = `
-      <input type="checkbox" ${task.isChecked ? "checked" : ""}>
-      <span>${task.title}</span>
+       <input type="checkbox" class="task-checkbox" ${
+         task.isChecked ? "checked" : ""
+       }>
+      <span class="${task.isChecked ? "line-through" : ""}">${task.title}</span>
       <button class="delete-btn">Delete</button>
     `;
 
     const checkbox = taskElement.querySelector("input");
-    checkbox.addEventListener("change", () => handleTaskClick(task.id));
+    checkbox.addEventListener("change", () => handleCheckboxClick(task.id));
 
     const deleteBtn = taskElement.querySelector(".delete-btn");
     deleteBtn.addEventListener("click", () => handleDeleteClick(task.id));
@@ -25,13 +27,10 @@ const renderTasks = () => {
   });
 };
 
-const handleTaskClick = (id) => {
-  tasks = tasks.map((task) => {
-    if (task.id === id) {
-      return { ...task, isChecked: !task.isChecked };
-    }
-    return task;
-  });
+const handleCheckboxClick = (id) => {
+  tasks = tasks.map((task) =>
+    task.id === id ? { ...task, isChecked: !task.isChecked } : task
+  );
   renderTasks();
 };
 
@@ -40,10 +39,10 @@ const handleDeleteClick = (id) => {
   renderTasks();
 };
 
-const handleSubmit = (e) => {
+const handleAddClick = (e) => {
   e.preventDefault();
+  const taskInput = document.querySelector("#taskInput");
   const inputValue = taskInput.value.trim();
-  if (!inputValue) return;
 
   tasks.push({
     id: tasks.length + 1,
@@ -55,7 +54,10 @@ const handleSubmit = (e) => {
   renderTasks();
 };
 
-const form = document.querySelector("#taskForm");
-form.addEventListener("submit", handleSubmit);
+const form = document.querySelector("#addTaskBtn");
+form.addEventListener("click", handleAddClick);
 
 renderTasks();
+
+
+

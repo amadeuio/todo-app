@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
-import AddTask from "./components/AddTask";
+import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+import TaskInput from "./components/TaskInput";
 import Task from "./components/Task";
 import initialTasks from "./data/tasks";
-import { v4 as uuidv4 } from "uuid";
 
 function App() {
   const [tasks, setTasks] = useState(initialTasks);
@@ -40,7 +40,7 @@ function App() {
       <div className="task-container">
         <h1>To-Do</h1>
         <hr className="border-slate-200 mb-6 mt-4" />
-        <AddTask onAddClick={handleAddClick} onChange={handleInputChange} />
+        <TaskInput onAddClick={handleAddClick} onChange={handleInputChange} />
         <div className="flex flex-col gap-2">
           {tasks.map((task) => (
             <Task

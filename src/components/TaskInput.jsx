@@ -1,6 +1,6 @@
 import { Plus } from "lucide-react";
 
-function AddTask({ onAddClick, onChange }) {
+function TaskInput({ onAddClick, onChange }) {
   return (
     <div className="flex items-center gap-2 mb-6">
       <input
@@ -17,4 +17,4 @@ function AddTask({ onAddClick, onChange }) {
   );
 }
 
-export default AddTask;
+export default TaskInput;
