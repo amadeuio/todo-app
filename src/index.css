@@ -23,7 +23,7 @@
 }
 
 @layer components {
-  .todo-container {
+  .task-container {
     @apply max-w-lg 
                w-full 
                flex 
@@ -52,7 +52,7 @@
            duration-200;
   }
 
-  .todo-item {
+  .task-item {
     @apply border 
            border-slate-200 
            rounded-lg 

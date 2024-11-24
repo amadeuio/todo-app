@@ -1,10 +1,11 @@
-import { useState } from "react";
-import AddTodo from "./components/AddTodo";
-import Todo from "./components/Todo";
-import initialTodos from "./data/todos";
+import { useState, useEffect } from "react";
+import AddTask from "./components/AddTask";
+import Task from "./components/Task";
+import initialTasks from "./data/tasks";
+import { v4 as uuidv4 } from "uuid";
 
 function App() {
-  const [todos, setTodos] = useState(initialTodos);
+  const [tasks, setTasks] = useState(initialTasks);
   const [inputValue, setInputValue] = useState("");
 
   const handleInputChange = (e) => {
@@ -12,41 +13,45 @@ function App() {
   };
 
   const handleCheckboxClick = (id) => {
-    const updatedTodos = todos.map((todo) =>
-      todo.id === id ? { ...todo, isChecked: !todo.isChecked } : todo
+    const updatedTasks = tasks.map((task) =>
+      task.id === id ? { ...task, isChecked: !task.isChecked } : task
     );
 
-    setTodos(updatedTodos);
+    setTasks(updatedTasks);
   };
 
   const handleDeleteClick = (id) => {
-    const updatedTodos = todos.filter((todo) => todo.id !== id);
+    const updatedTasks = tasks.filter((task) => task.id !== id);
 
-    setTodos(updatedTodos);
+    setTasks(updatedTasks);
   };
 
-  const handleSubmit = () => {
-    const updatedTodos = [
-      ...todos,
-      { id: todos.length + 1, title: inputValue, isChecked: false },
+  const handleAddClick = () => {
+    const updatedTasks = [
+      ...tasks,
+      { id: uuidv4(), title: inputValue, isChecked: false },
     ];
 
-    setTodos(updatedTodos);
+    setTasks(updatedTasks);
   };
+
+  useEffect(() => {
+    console.log(tasks);
+  }, [tasks]);
 
   return (
     <div className="flex justify-center items-center h-screen bg-gradient-custom">
-      <div className="todo-container">
+      <div className="task-container">
         <h1>To-Do</h1>
         <hr className="border-slate-200 mb-6 mt-4" />
-        <AddTodo onSubmit={handleSubmit} onChange={handleInputChange} />
+        <AddTask onAddClick={handleAddClick} onChange={handleInputChange} />
         <div className="flex flex-col gap-2">
-          {todos.map((todo) => (
-            <Todo
-              key={todo.id}
-              todo={todo}
-              onCheckboxClick={() => handleCheckboxClick(todo.id)}
-              onDeleteClick={() => handleDeleteClick(todo.id)}
+          {tasks.map((task) => (
+            <Task
+              key={task.id}
+              task={task}
+              onCheckboxClick={() => handleCheckboxClick(task.id)}
+              onDeleteClick={() => handleDeleteClick(task.id)}
             />
           ))}
         </div>

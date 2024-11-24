@@ -1,11 +1,11 @@
 import { Trash2 } from "lucide-react";
 import Checkbox from "./Checkbox";
 
-const Todo = ({ todo, onCheckboxClick, onDeleteClick }) => {
-  const { isChecked, title } = todo;
+const Task = ({ task, onCheckboxClick, onDeleteClick }) => {
+  const { isChecked, title } = task;
 
   return (
-    <div className="todo-item">
+    <div className="task-item">
       <Checkbox isChecked={isChecked} onClick={onCheckboxClick} />
       <div className={`${isChecked ? "line-through" : ""}`}>{title}</div>
       <Trash2
@@ -17,4 +17,4 @@ const Todo = ({ todo, onCheckboxClick, onDeleteClick }) => {
   );
 };
 
-export default Todo;
+export default Task;

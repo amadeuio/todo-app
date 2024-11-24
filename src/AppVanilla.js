@@ -1,61 +1,61 @@
-const todoContainer = document.querySelector(".todo-container");
-const todoInput = document.querySelector("#todoInput");
-const todoList = document.querySelector("#todoList");
+const taskContainer = document.querySelector(".task-container");
+const taskInput = document.querySelector("#taskInput");
+const taskList = document.querySelector("#taskList");
 
-let todos = [];
+let tasks = [];
 
-const renderTodos = () => {
-  todoList.innerHTML = "";
-  todos.forEach((todo) => {
-    const todoElement = document.createElement("div");
-    todoElement.className = "todo-item";
-    todoElement.innerHTML = `
-      <input type="checkbox" ${todo.isChecked ? "checked" : ""}>
-      <span>${todo.title}</span>
+const renderTasks = () => {
+  taskList.innerHTML = "";
+  tasks.forEach((task) => {
+    const taskElement = document.createElement("div");
+    taskElement.className = "task-item";
+    taskElement.innerHTML = `
+      <input type="checkbox" ${task.isChecked ? "checked" : ""}>
+      <span>${task.title}</span>
       <button class="delete-btn">Delete</button>
     `;
 
-    const checkbox = todoElement.querySelector("input");
-    checkbox.addEventListener("change", () => handleTodoClick(todo.id));
+    const checkbox = taskElement.querySelector("input");
+    checkbox.addEventListener("change", () => handleTaskClick(task.id));
 
-    const deleteBtn = todoElement.querySelector(".delete-btn");
-    deleteBtn.addEventListener("click", () => handleDeleteClick(todo.id));
+    const deleteBtn = taskElement.querySelector(".delete-btn");
+    deleteBtn.addEventListener("click", () => handleDeleteClick(task.id));
 
-    todoList.appendChild(todoElement);
+    taskList.appendChild(taskElement);
   });
 };
 
-const handleTodoClick = (id) => {
-  todos = todos.map((todo) => {
-    if (todo.id === id) {
-      return { ...todo, isChecked: !todo.isChecked };
+const handleTaskClick = (id) => {
+  tasks = tasks.map((task) => {
+    if (task.id === id) {
+      return { ...task, isChecked: !task.isChecked };
     }
-    return todo;
+    return task;
   });
-  renderTodos();
+  renderTasks();
 };
 
 const handleDeleteClick = (id) => {
-  todos = todos.filter((todo) => todo.id !== id);
-  renderTodos();
+  tasks = tasks.filter((task) => task.id !== id);
+  renderTasks();
 };
 
 const handleSubmit = (e) => {
   e.preventDefault();
-  const inputValue = todoInput.value.trim();
+  const inputValue = taskInput.value.trim();
   if (!inputValue) return;
 
-  todos.push({
-    id: todos.length + 1,
+  tasks.push({
+    id: tasks.length + 1,
     title: inputValue,
     isChecked: false,
   });
 
-  todoInput.value = "";
-  renderTodos();
+  taskInput.value = "";
+  renderTasks();
 };
 
-const form = document.querySelector("#todoForm");
+const form = document.querySelector("#taskForm");
 form.addEventListener("submit", handleSubmit);
 
-renderTodos();
+renderTasks();
