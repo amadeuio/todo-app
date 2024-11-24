@@ -1,7 +1,7 @@
 import { Trash2 } from "lucide-react";
 import Checkbox from "./Checkbox";
 
-const Task = ({ task, onCheckboxClick, onDeleteClick }) => {
+function Task({ task, onCheckboxClick, onDeleteClick }) {
   const { isChecked, title } = task;
 
   return (
@@ -15,6 +15,6 @@ const Task = ({ task, onCheckboxClick, onDeleteClick }) => {
       />
     </div>
   );
-};
+}
 
 export default Task;

@@ -35,10 +35,6 @@ function App() {
     setTasks(updatedTasks);
   };
 
-  useEffect(() => {
-    console.log(tasks);
-  }, [tasks]);
-
   return (
     <div className="flex justify-center items-center h-screen bg-gradient-custom">
       <div className="task-container">

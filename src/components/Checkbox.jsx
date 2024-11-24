@@ -1,6 +1,6 @@
 import { Check } from "lucide-react";
 
-const Checkbox = ({ isChecked, onClick }) => {
+function Checkbox({ isChecked, onClick }) {
   return (
     <div
       className={`flex items-center justify-center h-5 w-5 border rounded ${
@@ -13,6 +13,6 @@ const Checkbox = ({ isChecked, onClick }) => {
       )}
     </div>
   );
-};
+}
 
 export default Checkbox;
